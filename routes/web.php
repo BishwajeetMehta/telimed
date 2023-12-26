@@ -17,10 +17,14 @@ Route::get('/', function () {
 
 
 Route::view('/master','backend.dashboard.layouts.master');
-
+Route::post('/login','LoginController@login')->name('admin.login.submit');
 
 Route::group(['prefix'=>'admin'], function () {
-    Route::view('dashboard','backend.dashboard.index');
+    Route::view('dashboard','backend.dashboard.index')->name('dashboard');
+
+    Route::view('login','backend.dashboard.login');
+
+
 });
 
 
