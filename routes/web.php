@@ -22,7 +22,9 @@ Route::post('/login','LoginController@login')->name('admin.login.submit');
 Route::group(['prefix'=>'admin'], function () {
     Route::view('dashboard','backend.dashboard.index')->name('dashboard');
 
-    Route::view('login','backend.dashboard.login');
+    Route::view('login','backend.dashboard.login')->name('admin.login.submitform');
+    Route::get('logout','logincontroller@logout')->name('admin.login.logout');
+
 
 
 });
