@@ -29,12 +29,11 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-        aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
-    </a>
-</li>
+   <a class="nav-link" href="{{route ('system-setting.form')}}">
+   <i class="fas fa-fw fa-cog"></i>
+        <span>System settings</span> 
+      </li>
+
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">

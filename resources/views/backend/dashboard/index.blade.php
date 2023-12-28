@@ -2,7 +2,7 @@
 @section('title','Admin dashboard')
 @section('content')
 
-fdfgdfg
+
 
 
 
