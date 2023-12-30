@@ -11,15 +11,15 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 
   <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
   <!-- Icon Font Css -->
-  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+  <link rel="stylesheet" href="{{asset('plugins/icofont/icofont.min.css')}}">
   <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+  <link rel="stylesheet" href="{{asset('plugins/slick-carousel/slick/slick.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/slick-carousel/slick/slick-theme.css')}}">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
 
@@ -30,10 +30,6 @@
 	@include('frontend.common.navbar')
 </header>
 	
-
-
-
-<!-- Slider Start -->
 <section class="banner">
 	<div class="container">
 		<div class="row">
@@ -117,6 +113,54 @@
 					<a href="service.html" class="btn btn-main-2 btn-round-full btn-icon">Services<i class="icofont-simple-right ml-3"></i></a>
 				</div>
 			</div>
+		</div>
+	</div>
+</section>
+<section class="page-title bg-1">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block text-center">
+          <span class="text-white">Our services</span>
+          <h1 class="text-capitalize mb-5 text-lg">What We Do</h1>
+
+          <!-- <ul class="list-inline breadcumb-nav">
+            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+            <li class="list-inline-item"><span class="text-white">/</span></li>
+            <li class="list-inline-item"><a href="#" class="text-white-50">Our services</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section service-2">
+<h2> </h2>
+	<div class="container">
+   @dd($specifications)
+    @forelse($specifications->doctor as $doctor)
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="service-block mb-5">
+					<img src="images/service/service-1.jpg" alt="" class="img-fluid">
+					<div class="content">
+						<h4 class="mt-4 mb-2 title-color">Child care</h4>
+						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+					</div>
+				</div>
+			</div>
+@empty
+
+@endforelse
+		
+
+
+			
+			
+			
 		</div>
 	</div>
 </section>
@@ -218,7 +262,7 @@
 				<div class="appoinment-content">
 					<img src="images/about/img-3.jpg" alt="" class="img-fluid">
 					<div class="emergency">
-						<h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i>+23 345 67980</h2>
+						<h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i>{{ $_SESSION['setting']->phone ? $_SESSION['setting']->phone :'' }}</h2>
 					</div>
 				</div>
 			</div>
@@ -292,7 +336,7 @@
 	</div>
 </section>
 
->
+
 <!-- footer Start -->
 @include('frontend.common.footer')
 
@@ -304,24 +348,24 @@
 
     
     <!-- Main jQuery -->
-    <script src="plugins/jquery/jquery.js"></script>
+    <script src="{{asset('plugins/jquery/jquery.js')}}"></script>
     <!-- Bootstrap 4.3.2 -->
-    <script src="plugins/bootstrap/js/popper.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/counterup/jquery.easing.js"></script>
+    <script src="{{asset('plugins/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('plugins/counterup/jquery.easing.js')}}"></script>
     <!-- Slick Slider -->
-    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <script src="{{asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
     <!-- Counterup -->
-    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
+    <script src="{{asset('plugins/counterup/jquery.waypoints.min.js')}}"></script>
     
-    <script src="plugins/shuffle/shuffle.min.js"></script>
-    <script src="plugins/counterup/jquery.counterup.min.js"></script>
+    <script src="{{asset('plugins/shuffle/shuffle.min.js')}}"></script>
+    <script src="{[asset('plugins/counterup/jquery.counterup.min.js')}}"></script>
     <!-- Google Map -->
-    <script src="plugins/google-map/map.js"></script>
+    <script src="{{asset('plugins/google-map/map.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
     
-    <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
+    <script src="{{asset('js/script.js')}}"></script>
+    <script src="{{asset('js/contact.js')}}"></script>
 
   </body>
   </html>
