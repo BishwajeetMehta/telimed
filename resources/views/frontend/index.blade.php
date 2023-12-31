@@ -140,8 +140,8 @@
 <section class="section service-2">
 <h2> </h2>
 	<div class="container">
-   @dd($specifications)
-    @forelse($specifications->doctor as $doctor)
+  
+    @forelse($specifications as $doctor)
 		<div class="row">
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="service-block mb-5">
