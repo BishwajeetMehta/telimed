@@ -122,8 +122,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <span class="text-white">Our services</span>
-          <h1 class="text-capitalize mb-5 text-lg">What We Do</h1>
+          <span class="text-white">Our services and Team</span>
+          <h1 class="text-capitalize mb-5 text-lg"> Our Doctors and their specifications</h1>
 
           <!-- <ul class="list-inline breadcumb-nav">
             <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
@@ -137,33 +137,64 @@
 </section>
 
 
-<section class="section service-2">
-<h2> </h2>
-	<div class="container">
-   @dd($specifications)
-    @forelse($specifications->doctor as $doctor)
-		<div class="row">
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-block mb-5">
-					<img src="images/service/service-1.jpg" alt="" class="img-fluid">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Child care</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-					</div>
-				</div>
-			</div>
-@empty
+<!-- card -->
+@forelse($specifications as $spec)
+        <div class="container-fluid fruite py-5">
+            <div class="container py-5">
+            
+                <div class="tab-class text-center">
+                
+                    <div class="row g-4">
+                        
+                        <div class="col-lg-4 text-start">
+                            <h2>{{ $spec->specification}} </h2>
+                           
+                        </div>
+                        
+                    </div>
+                
+                    <div class="tab-content">
+                  
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                             
+                        <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="row g-4">
+									@forelse($spec->doctor as $doc) 
+                                        <div class="col-md-6 col-lg-4 col-xl-3">
+                                            <div class="rounded position-relative fruite-item">
+                                                <div class="fruite-img">
+                                                    <img src="{{  $doc->image}}" class=" rounded-top" width="260" height="130" alt="">
+                                                </div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;"></div>
+                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                    <h5>{{  $doc->name}}</h5>
+                                                    <p> {{  $doc->description}}</p>
+													<a class="btn btn-main btn-round-full" href="{{route('appointment')}}" >Make Appoinment <i class="icofont-simple-right ml-2  "></i></a>
+                                                    <div class="d-flex justify-content-between flex-lg-wrap">
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @empty
+        @endforelse
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                    </div>
+                  
+                </div>  
+              
+            </div>
+        </div>
+        @empty
+        @endforelse
+<!-- End Card -->
 
-@endforelse
-		
-
-
-			
-			
-			
-		</div>
-	</div>
-</section>
 
 <section class="section service gray-bg">
 	<div class="container">

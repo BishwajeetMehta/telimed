@@ -49,8 +49,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Doctor Details:</h6>
             <a class="collapse-item" href="{{route('specification.display')}}">Specifications</a>
-            <a class="collapse-item" href="utilities-border.html">Add Doctor</a>
-            <a class="collapse-item" href="utilities-animation.html">Manage Doctor</a>
+            <a class="collapse-item" href="{{route('doctor.add')}}">Add Doctor</a>
+            <a class="collapse-item" href="{{route('doctor.display')}}">Manage Doctor</a>
             <a class="collapse-item" href="utilities-other.html">Other</a>
         </div>
     </div>

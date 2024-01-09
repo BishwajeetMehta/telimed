@@ -42,5 +42,41 @@ class logincontroller extends Controller
             return redirect()->back();
     
     }
+
+    public function signup (Request $request){
+        
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'password'=>'required|min:6',
+            
+        // ]);
+
+        $image = '';
+        if($request->has('image') && $request->file('image')){
+            $file  = $request->file('image');
+            $newName = time().'-'. rand(10,9999999999999).'-'.$file->getClientOriginalName();
+            $newPath = public_path().'/users'.'/';
+            $file->move($newPath, $newName);
+            $image = asset('/users').'/'.$newName;
+
+            }
+       
+        $data=[
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password), 
+            'mobile'=>$request->mobile,
+           'image'=>$image,
+            'age'=>$request->age,
+            'address'=>$request->address,
+        ];
+        User::insert($data);
+        return redirect()->back();
+       }
+
+
+
+
 }
 

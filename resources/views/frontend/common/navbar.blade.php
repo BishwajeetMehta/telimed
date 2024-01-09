@@ -34,7 +34,7 @@
 				<a class="nav-link" href="{{url('/')}}">Home</a>
 			  </li>
 			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-			    <li class="nav-item"><a class="nav-link" href="{{route('team')}}">Our Team</a></li>
+			    <li class="nav-item"><a class="nav-link" href="#">Our Team</a></li>
 
 			    <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>

@@ -16,26 +16,40 @@ use App\specification;
 Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
-    $data['specifications'] = specification::with('doctor')->get();
- // dd($data);
     $_SESSION['setting'] = $data['system'];
-    return view('frontend.index',$data);
+    $data['specifications'] = specification::with('doctor')->get();
+
+      return view('frontend.index',$data);
 });
 
 
-Route::view('/team','frontend.team')->name('team');
+Route::get('/appointment', function () {
+
+    $data['system'] = systemsettings::find(1);
+        $_SESSION['setting'] = $data['system'];
+    return view('frontend.appointment',$data);
+})->name('appointment');
 
 
 
-Route::post('/login','LoginController@login')->name('admin.login.submit');
 
+
+
+ 
+
+
+
+
+
+ 
 
 Route::view('/create','backend.dashboard.layouts.doctordetails.addDoctor')->name('create');
 
 
 Route::group(['prefix'=>'admin'], function () {
     Route::view('dashboard','backend.dashboard.index')->name('dashboard');
-    Route::view('login','backend.dashboard.login')->name('admin.login.submitform');
+    Route::view('login-form','backend.dashboard.login')->name('admin.login.submitform');
+    Route::post('login','logincontroller@login')->name('admin.login.submit');
     Route::get('logout','logincontroller@logout')->name('admin.login.logout');
     /* System-setting*/
     Route::view('setting','backend.dashboard.layouts.system_setting')->name('system-setting.form');
@@ -47,11 +61,27 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/edit/{id}','specificationcontroller@edit')->name('specification.edit');
     Route::post('/update/{id}','specificationcontroller@update')->name('specification.update');
     Route::get('display','specificationcontroller@disp')->name('specification.display');
-    Route::get('delete/{id}','specificationcontroller@delete')->name('specification.delete');
+     Route::get('delete/{id}','specificationcontroller@delete')->name('specification.delete');
+//Doctor details
+    Route::get('add-dcoctor','doctorcontroller@index')->name('doctor.add');
+    Route::post('dcoctor-submit','doctorcontroller@create')->name('doctor.submit');
+    Route::get('doctor','doctorcontroller@disp')->name('doctor.display');
+    Route::get('editdoctor/{id}','specificationcontroller@edit')->name('doctor.edit');
+    Route::get('deletedoctor/{id}','doctorcontroller@delete')->name('doctor.delete');
 
     
 });
 
+
+
+Route::group(['prefix'=>'user'], function () {
+
+    Route::view('login-form','frontend.usersignin')->name('login.submitform');
+    Route::post('add-user','logincontroller@signup')->name('user.signup');
+    Route::view('signup','frontend.usersignup');
+});
+
+Route::get('doctor-list/{specification}','doctorcontroller@doctorList')->name('doctor.list');
 
 
 
