@@ -13,6 +13,9 @@ use App\specification;
 |
 */
 
+
+//  display
+
 Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
@@ -71,8 +74,6 @@ Route::group(['prefix'=>'admin'], function () {
 
     
 });
-
-
 
 Route::group(['prefix'=>'user'], function () {
 
