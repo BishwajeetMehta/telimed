@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\doctor;
 use Illuminate\Http\Request;
 use App\specification;
+use function foo\func;
+
 class specificationcontroller extends Controller
 {
     public function disp()
@@ -64,5 +67,27 @@ class specificationcontroller extends Controller
             $data->delete();
         }
         return redirect()->back();
+    }
+
+    public  function getDoctorList( Request $request)
+    {
+
+        if(!$request->id){
+            //add flash message here siir
+            return redirect()->back();
+        }
+        $doctors = doctor::whereHas('specifications', function($q) use ($request){
+            $q->where('id',$request->id);
+        })->get();
+
+        $html = '';
+        if($doctors){
+            foreach ($doctors as $doctor){
+                $html.= '<option value="'.$doctor->id.'">'.$doctor->name.'</option>';
+            }
+            return  response()->json(['doctors' => $html]);
+        }
+        return  response()->json(['doctors' => '<option>No doctor Found</option>']);
+
     }
 }

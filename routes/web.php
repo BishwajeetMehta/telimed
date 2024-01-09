@@ -16,7 +16,7 @@ use App\specification;
 Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
-    $data['specifications'] = specification::with('doctor')->get();
+    $data['specifications'] = specification::all();
  // dd($data);
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index',$data);
@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 
 Route::view('/team','frontend.team')->name('team');
+Route::get('/doctors','specificationcontroller@getDoctorList')->name('doctors.list');
 
 
 

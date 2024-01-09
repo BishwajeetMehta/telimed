@@ -274,29 +274,20 @@
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>Choose Department</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
+                                <select class="form-control" id="specificationList">
+
+                                 @forelse($specifications as $specification)
+										<option value="{{ $specification->id }}">{{ $specification->specification }}</option>
+									@empty
+                                 @endforelse
+
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                  <option>Select Doctors</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
+                                <select class="form-control" id="doctorsList">
+                                  <option>--Select--</option>
                                 </select>
                             </div>
                         </div>
@@ -366,6 +357,21 @@
     
     <script src="{{asset('js/script.js')}}"></script>
     <script src="{{asset('js/contact.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function () {
+		$("#specificationList").change(function () {
+
+			$.ajax({
+				url: "{{ route('doctors.list') }}",
+				data: {'id': $('#specificationList').val()},
+				success: function (result) {
+					$('#doctorsList').empty().html(result.doctors)
+				}
+			});
+		});
+	});
+</script>
 
   </body>
   </html>
