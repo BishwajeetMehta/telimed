@@ -28,8 +28,22 @@ Route::get('/', function () {
 });
 
 
-Route::view('/team','frontend.team')->name('team');
-Route::get('/doctors','specificationcontroller@getDoctorList')->name('doctors.list');
+Route::get('/appointment', function () {
+
+    $data['system'] = systemsettings::find(1);
+        $_SESSION['setting'] = $data['system'];
+        $data['specifications'] = specification::with('doctor')->get();
+
+    return view('frontend.appointment',$data);
+})->name('appointment');
+
+
+Route::get('/contact', function () {
+
+    $data['system'] = systemsettings::find(1);
+        $_SESSION['setting'] = $data['system'];
+    return view('frontend.contact',$data);
+})->name('contact');
 
 
 
