@@ -22,6 +22,7 @@ class usertableseeder extends Seeder
         ];
 
         DB::table('users')->insert($data);
+        factory(\App\User::class, 100)->create();
     }
     
 }

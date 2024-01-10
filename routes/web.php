@@ -19,6 +19,8 @@ use App\specification;
 Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
+    $data['specifications'] = specification::all();
+ // dd($data);
     $_SESSION['setting'] = $data['system'];
     $data['specifications'] = specification::with('doctor')->get();
 
@@ -26,22 +28,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/appointment', function () {
-
-    $data['system'] = systemsettings::find(1);
-        $_SESSION['setting'] = $data['system'];
-        $data['specifications'] = specification::with('doctor')->get();
-
-    return view('frontend.appointment',$data);
-})->name('appointment');
-
-
-Route::get('/contact', function () {
-
-    $data['system'] = systemsettings::find(1);
-        $_SESSION['setting'] = $data['system'];
-    return view('frontend.contact',$data);
-})->name('contact');
+Route::view('/team','frontend.team')->name('team');
+Route::get('/doctors','specificationcontroller@getDoctorList')->name('doctors.list');
 
 
 
