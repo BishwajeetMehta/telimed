@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::view('/team','frontend.team')->name('team');
 Route::get('/doctors','specificationcontroller@getDoctorList')->name('doctors.list');
-
+Route::get('/book-appoitment','AppoitmentController@storeAppointments')->name('appointment.save');
 
 
 Route::post('/login','LoginController@login')->name('admin.login.submit');
