@@ -79,7 +79,7 @@
                                   <option>Process Query</option>
                                   <option>Cost and Duration</option>
                                   <option>Modal Delivery</option>
-                                </select>
+                               
                             </div>
                         </div>
                         <div class="col-lg-6">

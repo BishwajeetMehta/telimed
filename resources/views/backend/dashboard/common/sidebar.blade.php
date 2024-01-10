@@ -28,10 +28,21 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
+
+<li class="nav-item">
+   <a class="nav-link" href="{{url ('/')}}">
+   <i class="fas fa-fw fa-cog"></i>
+        <span>website</span> 
+      </li>
 <li class="nav-item">
    <a class="nav-link" href="{{route ('system-setting.form')}}">
    <i class="fas fa-fw fa-cog"></i>
         <span>System settings</span> 
+      </li>
+      <li class="nav-item">
+   <a class="nav-link" href="{{route ('user.display')}}">
+   <i class="fas fa-fw fa-cog"></i>
+        <span>Manage Users</span> 
       </li>
 
       

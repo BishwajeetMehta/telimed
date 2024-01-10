@@ -30,8 +30,18 @@ Route::get('/appointment', function () {
 
     $data['system'] = systemsettings::find(1);
         $_SESSION['setting'] = $data['system'];
+        $data['specifications'] = specification::with('doctor')->get();
+
     return view('frontend.appointment',$data);
 })->name('appointment');
+
+
+Route::get('/contact', function () {
+
+    $data['system'] = systemsettings::find(1);
+        $_SESSION['setting'] = $data['system'];
+    return view('frontend.contact',$data);
+})->name('contact');
 
 
 
@@ -39,10 +49,6 @@ Route::get('/appointment', function () {
 
 
  
-
-
-
-
 
  
 
@@ -71,8 +77,10 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('doctor','doctorcontroller@disp')->name('doctor.display');
     Route::get('editdoctor/{id}','specificationcontroller@edit')->name('doctor.edit');
     Route::get('deletedoctor/{id}','doctorcontroller@delete')->name('doctor.delete');
+//manage user
+Route::get('manageuser','manageusercontroller@disp')->name('user.display');
+Route::get('deleteuser/{id}','manageusercontroller@delete')->name('user.delete');
 
-    
 });
 
 Route::group(['prefix'=>'user'], function () {
@@ -80,6 +88,8 @@ Route::group(['prefix'=>'user'], function () {
     Route::view('login-form','frontend.usersignin')->name('login.submitform');
     Route::post('add-user','logincontroller@signup')->name('user.signup');
     Route::view('signup','frontend.usersignup');
+
+
 });
 
 Route::get('doctor-list/{specification}','doctorcontroller@doctorList')->name('doctor.list');
