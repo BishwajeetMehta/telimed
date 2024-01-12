@@ -11,7 +11,9 @@ class logincontroller extends Controller
 {
       public function login(Request $request){
        
-            $request->validate([
+          
+        
+        $request->validate([
                 'email' =>'required|email',
                 'password' =>'required|min:6'
             ]);
@@ -22,7 +24,15 @@ class logincontroller extends Controller
                 if($user->password){
                     if(Hash::check($request->password, $user->password)){
                         Auth::login($user);
-                        return redirect()->route('dashboard');
+                        if($user->role =='admin'){
+                            return redirect()->route('userdashboard');
+                            }
+                         else if ($user->role =='user'){
+                             return redirect()->route('userdashboard');
+                            }
+                    else{
+                           return redirect()->back()->with('error', 'Check Email , Password!');
+                            }
                     }
                     $request->session()->flash('error', 'Please check Password');
                     return redirect()->back();

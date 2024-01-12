@@ -14,6 +14,8 @@ class usertableseeder extends Seeder
      */
     public function run()
     {
+       // DB::table('users')->truncate();
+
         $data = [
            
             'email' =>'admin@admin.com',

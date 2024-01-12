@@ -141,8 +141,10 @@
 <h2> </h2>
 	<div class="container">
   
-    @forelse($specifications as $doctor)
+    @forelse($specifications as $spec)
+<h2>{{$spec->specification}}	</h2>
 		<div class="row">
+		
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="service-block mb-5">
 					<img src="images/service/service-1.jpg" alt="" class="img-fluid">
@@ -151,6 +153,7 @@
 						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
 					</div>
 				</div>
+			</div>
 			</div>
 @empty
 
@@ -161,7 +164,7 @@
 			
 			
 			
-		</div>
+		
 	</div>
 </section>
 
@@ -275,7 +278,7 @@
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" id="specificationList">
+                                <select class="form-control" id="specificationList" name="specification">
 
                                  @forelse($specifications as $specification)
 										<option value="{{ $specification->id }}">{{ $specification->specification }}</option>
@@ -287,7 +290,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" id="doctorsList">
+                                <select class="form-control" id="doctorsList" name="doctor_id">
                                   <option>--Select--</option>
                                 </select>
                             </div>
@@ -295,7 +298,7 @@
 
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
+                                <input name="date" id="date" type="text" class="form-control" placeholder="YYYY-MM-DD">
                             </div>
                         </div>
 
@@ -304,15 +307,19 @@
                                 <input name="time" id="time" type="text" class="form-control" placeholder="Time">
                             </div>
                         </div>
-                         <div class="col-lg-6">
+						<div class="col-lg-6">
                             <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
+                                <select class="form-control" id="specificationList" name="userid">
+										<option value="{{ auth()->user()->id }}">{{Illuminate\Support\Facades\Auth::check() ? Illuminate\Support\Facades\Auth::user()->name: 'Please Login first'}}</option>
+								
+
+                                </select>
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="phone" id="phone" type="Number" class="form-control" placeholder="Phone Number">
+                                <input name="phone" type="text" class="form-control" placeholder="Phone Number">
                             </div>
                         </div>
                     </div>
@@ -320,7 +327,7 @@
                         <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
                     </div>
 
-                    <a class="btn btn-main btn-round-full" href="appoinment.html" >Make Appoinment <i class="icofont-simple-right ml-2  "></i></a>
+                    <button type=submit btn-primary >Make Appoinment </button>
                 </form>
             </div>
 			</div>

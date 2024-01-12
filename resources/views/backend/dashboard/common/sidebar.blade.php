@@ -29,6 +29,11 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
+   <a class="nav-link" href="{{url ('/')}}">
+   <i class="fas fa-fw fa-cog"></i>
+        <span>Website</span> 
+      </li>
+<li class="nav-item">
    <a class="nav-link" href="{{route ('system-setting.form')}}">
    <i class="fas fa-fw fa-cog"></i>
         <span>System settings</span> 
@@ -49,13 +54,22 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Doctor Details:</h6>
             <a class="collapse-item" href="{{route('specification.display')}}">Specifications</a>
-            <a class="collapse-item" href="utilities-border.html">Add Doctor</a>
-            <a class="collapse-item" href="utilities-animation.html">Manage Doctor</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="{{route('doctor.add')}}">Add Doctor</a>
+            <a class="collapse-item" href="{{route('doctor.display')}}">Manage Doctor</a>
+           
         </div>
     </div>
 </li>
-
+<li class="nav-item">
+   <a class="nav-link" href="{{route ('user.display')}}">
+   <i class="fas fa-fw fa-cog"></i>
+        <span> Manage User</span> 
+      </li>
+      <li class="nav-item">
+   <a class="nav-link" href="{{route ('appointment.display')}}">
+   <i class="fas fa-fw fa-cog"></i>
+        <span> Manage Appointments</span> 
+      </li>
 
 
 <!-- Sidebar Toggler (Sidebar) -->

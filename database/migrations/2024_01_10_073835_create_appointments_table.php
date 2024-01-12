@@ -24,7 +24,7 @@ class CreateAppointmentsTable extends Migration
             $table->timestamps();
             $table->foreign('specification_id')->references('id')->on('specifications')->onDelete('cascade');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
-            $table->foreign('user-id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
 
         });

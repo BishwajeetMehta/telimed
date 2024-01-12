@@ -17,15 +17,15 @@ Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
     $data['specifications'] = specification::all();
- // dd($data);
+
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index',$data);
-});
+})->name('userdashboard')->middleware('auth');
 
 
 Route::view('/team','frontend.team')->name('team');
 Route::get('/doctors','specificationcontroller@getDoctorList')->name('doctors.list');
-Route::get('/book-appoitment','AppoitmentController@storeAppointments')->name('appointment.save');
+Route::post('/book-appoitment','AppoitmentController@storeAppointments')->name('appointment.save');
 
 
 Route::post('/login','LoginController@login')->name('admin.login.submit');
@@ -49,8 +49,29 @@ Route::group(['prefix'=>'admin'], function () {
     Route::post('/update/{id}','specificationcontroller@update')->name('specification.update');
     Route::get('display','specificationcontroller@disp')->name('specification.display');
     Route::get('delete/{id}','specificationcontroller@delete')->name('specification.delete');
+//doctor
+Route::get('adddoctor','doctorcontroller@spedoc')->name('doctor.add');
+Route::get('displaydoctor','doctorcontroller@disp')->name('doctor.display');
+Route::get('deletedoctor/{id}','doctorcontroller@delete')->name('doctor.delete');
+//appointments
+Route::get('appointments','AppoitmentController@disp')->name('appointment.display');
+Route::get('declineappointment/{id}','AppoitmentController@delete')->name('declineappointment');
+Route::get('editappointment/{id}','AppoitmentController@edit')->name('appointment.edit');
+Route::post('updateappointments/{id}','AppoitmentController@update')->name('appointment.update');
 
-    
+});
+
+Route::group(['prefix'=>'user'], function () {
+//user
+Route::get('displayuser','UserController@disp')->name('user.display');
+Route::get('deleteuser/{id}','UserController@delete')->name('user.delete');
+Route::view('signup','frontend.usersignup')->name('user.signupform');
+Route::post('usersignup','UserController@usersignup')->name('usersignup.submit');
+Route::view('login','frontend.usersignin')->name('login');
+Route::post('usersignin','logincontroller@login')->name('user.login');
+Route::post('user-mail/{id}','Mailcontroller@usermails')->name('user.mail');
+
+
 });
 
 
