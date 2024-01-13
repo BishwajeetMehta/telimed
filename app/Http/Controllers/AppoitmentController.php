@@ -21,6 +21,7 @@ class AppoitmentController extends Controller
         ];
 
         Appointment::insert($data);
+        return rediect()->back();
        //send appointment confirmation mail
         //redirect from here
     }
@@ -28,7 +29,7 @@ class AppoitmentController extends Controller
 
     public function disp()
     {
-        $data['appointments'] = Appointment::all();
+        $data['appointments'] = Appointment::with('specification','doctor','user')->get();
         return view('backend.dashboard.layouts.user.manageappointment', $data);
     }
     public function edit($id){

@@ -144,16 +144,19 @@
     @forelse($specifications as $spec)
 <h2>{{$spec->specification}}	</h2>
 		<div class="row">
-		
+		@forelse($spec->doctor as $doc)
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="service-block mb-5">
-					<img src="images/service/service-1.jpg" alt="" class="img-fluid">
+					<img src="{{$doc->image}}" alt="" class="img-fluid">
 					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Child care</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+						<h4 class="mt-4 mb-2 title-color">{{$doc->name}}</h4>
+						<p class="mb-4">{{$doc->description}}</p>
 					</div>
 				</div>
 			</div>
+			@empty
+<hr><h2 style="text-align:center;">No related Doctor</h2></hr>
+@endforelse
 			</div>
 @empty
 

@@ -41,8 +41,8 @@
                                             <td>{{$doc->fee}}</td>
                                             <td>{{$doc->status}}</td>
                                             <td>{{$doc->description}}</td>
-                                            <td>{{$doc->image}}</td>
-                                            <td> <a href="#"  class='btn btn-primary'>edit</a>&nbsp&nbsp&nbsp<a href="{{route('doctor.delete',$doc->id)}}" class='btn btn-danger'>Delete</a> </td>
+                                            <td><img src="{{$doc->image}}"height="100px" width="100px"></td>
+                                            <td> <a href="#"  class='btn btn-primary'>edit</a>&nbsp&nbsp&nbsp<br><br><a href="{{route('doctor.delete',$doc->id)}}" class='btn btn-danger'>Delete</a> </td>
                                             @empty
                                             <td>
                                                 no records

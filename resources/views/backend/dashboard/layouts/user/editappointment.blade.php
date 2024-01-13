@@ -9,6 +9,8 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Status</label>
+    <select name="status">
+      <option value="Approved">Approved</select>
     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="status " name='status' value="{{$appointments->status?? ''}}">
   </div>
   

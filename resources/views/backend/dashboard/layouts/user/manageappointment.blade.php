@@ -34,10 +34,9 @@
                                             <form action="{{route('user.mail',$apoints->user_id)}}" method="post">
                                                 @csrf
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$apoints->specification_id}}</td>
-                                            <td><input type="text" name="doctorid" value="{{$apoints->doctor_id}}">
-                                            </td>
-                                            <td><input type="text" value="{{$apoints->user_id}}" name="userid"></input></td> 
+                                            <td>{{$apoints->specification->specification}}</td>
+                                            <td>{{$apoints->doctor->name}}</td>
+                                            <td>{{$apoints->user->name}}</td> 
                                             <td>{{$apoints->date}}</td>
                                             <td>{{$apoints->time}}</td>
                                             <td>{{$apoints->message}}</td>

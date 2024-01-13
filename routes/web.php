@@ -16,7 +16,7 @@ use App\specification;
 Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
-    $data['specifications'] = specification::all();
+    $data['specifications'] = specification::with('doctor')->get();
 
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index',$data);

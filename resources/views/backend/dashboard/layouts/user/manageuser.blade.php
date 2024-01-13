@@ -37,7 +37,7 @@
                                             <td>{{$users->mobile}}</td> 
                                             <td>{{$users->address}}</td>
                                             <td>{{$users->age}}</td>
-                                            <td>{{$users->image}}</td>
+                                            <td><img src="{{$users->image}}"height="100px" width="100px"></td>
                                             
                                             <td>&nbsp&nbsp&nbsp<a href="{{route('user.delete',$users->id)}}" class='btn btn-danger'>Delete</a> </td>
                                             @empty
