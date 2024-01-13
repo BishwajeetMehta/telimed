@@ -16,7 +16,7 @@ use App\specification;
 Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
-    $data['specifications'] = specification::all();
+    $data['specifications'] = specification::take(10)->get();
 
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index',$data);
@@ -53,6 +53,7 @@ Route::group(['prefix'=>'admin'], function () {
 Route::get('adddoctor','doctorcontroller@spedoc')->name('doctor.add');
 Route::get('displaydoctor','doctorcontroller@disp')->name('doctor.display');
 Route::get('deletedoctor/{id}','doctorcontroller@delete')->name('doctor.delete');
+
 //appointments
 Route::get('appointments','AppoitmentController@disp')->name('appointment.display');
 Route::get('declineappointment/{id}','AppoitmentController@delete')->name('declineappointment');
