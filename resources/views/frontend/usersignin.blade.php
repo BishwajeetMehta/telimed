@@ -121,17 +121,27 @@ body {
   <main class="form-signin">
     
       <h1 class="h3">Login</h1>
-    
+      @foreach ($errors->all() as $error)
+        
+        @endforeach
     <form action="{{route('user.login')}}" method="post">
     @csrf
 
       <div class="form-floating">
-        <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+        <input type="email" class="form-control" name="email" placeholder="name@example.com" >
+        @if($errors->first('email'))
+        <span style='color:red;'>{{$errors->first('email')}}</span>
+        @endif
         <label for="floatingInput">Email address</label>
+       
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" name="password" placeholder="Password" required>
+        <input type="password" class="form-control" name="password" placeholder="Password" >
+        @if($errors->first('password'))
+        <span style='color:red;'>{{$errors->first('password')}}</span>
+        @endif
         <label for="floatingPassword">Password</label>
+       
       </div>
 
  

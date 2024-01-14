@@ -9,7 +9,7 @@ class doctorcontroller extends Controller
 {
     public function disp()
     {
-        $data['doctors'] = doctor::all();
+        $data['doctors'] = doctor::latest()->paginate(15);
         return view('backend.dashboard.layouts.doctordetails.managedoctor', $data);
     }
 
@@ -20,6 +20,14 @@ class doctorcontroller extends Controller
     }
 
     public function create(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' =>'required|email',
+            'password' =>'required|min:6',
+            'image' => 'required|mimes:jpeg,png,jpg,gif',
+            'fee' => 'required',
+           
+        ]);
 
         $image_url = '';
         if($request->has('image') && $request->file('image')){

@@ -12,15 +12,15 @@ class AppointmentMail extends Mailable
     use Queueable, SerializesModels;
  
 
-    private $appointmail;
+  protected $status;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($appointmail)
+    public function __construct($status)
     {
-       $this->appointmail=$appointmail;
+       $this->status=$status;
     }
 
     /**
@@ -30,8 +30,8 @@ class AppointmentMail extends Mailable
      */
     public function build()
     {
-        dd($appointmail);
-        $appointmail=$this->appointmail;
-        return $this->view('frontend.appointmentmail',compact('appointmail'))->subject('Appointment approval from telimed');
+
+        $status=$this->status;
+        return $this->view('frontend.appointmentmail',compact('status'))->subject('Appointment Status from Telimed');
     }
 }

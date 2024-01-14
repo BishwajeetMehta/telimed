@@ -54,10 +54,10 @@
                                 </table>
                                
                             </div>
-                            
+                            {{$doctors->links()}}
                         </div>
                         <hr> 
-                                <a href="#" class='btn btn-primary'>Add new specification</a>
+                                <a href="{{route('doctor.add.form')}}" class='btn btn-primary'>Add new Doctor</a>
                             </hr>
                     </div>
 

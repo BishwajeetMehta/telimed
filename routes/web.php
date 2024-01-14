@@ -16,16 +16,16 @@ use App\specification;
 Route::get('/', function () {
 
     $data['system'] = systemsettings::find(1);
-    $data['specifications'] = specification::with('doctor')->get();
+    $data['specifications'] = specification::take(10)->get();
 
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index',$data);
-})->name('userdashboard')->middleware('auth');
+})->name('userdashboard');
 
-
+Route::view('login','frontend.usersignin')->name('login');
 Route::view('/team','frontend.team')->name('team');
 Route::get('/doctors','specificationcontroller@getDoctorList')->name('doctors.list');
-Route::post('/book-appoitment','AppoitmentController@storeAppointments')->name('appointment.save');
+Route::post('/book-appoitment','AppoitmentController@storeAppointments')->name('appointment.save')->middleware('auth');
 
 
 Route::post('/login','LoginController@login')->name('admin.login.submit');
@@ -34,7 +34,7 @@ Route::post('/login','LoginController@login')->name('admin.login.submit');
 Route::view('/create','backend.dashboard.layouts.doctordetails.addDoctor')->name('create');
 
 
-Route::group(['prefix'=>'admin'], function () {
+Route::group(['prefix'=>'admin','middleware'=>'auth'], function () {
     Route::view('dashboard','backend.dashboard.index')->name('dashboard');
     Route::view('login','backend.dashboard.login')->name('admin.login.submitform');
     Route::get('logout','logincontroller@logout')->name('admin.login.logout');
@@ -50,9 +50,12 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('display','specificationcontroller@disp')->name('specification.display');
     Route::get('delete/{id}','specificationcontroller@delete')->name('specification.delete');
 //doctor
-Route::get('adddoctor','doctorcontroller@spedoc')->name('doctor.add');
+
+Route::get('adddoctor','doctorcontroller@spedoc')->name('doctor.add.form');
+Route::post('adddoctors','doctorcontroller@create')->name('doctor.add');
 Route::get('displaydoctor','doctorcontroller@disp')->name('doctor.display');
 Route::get('deletedoctor/{id}','doctorcontroller@delete')->name('doctor.delete');
+
 //appointments
 Route::get('appointments','AppoitmentController@disp')->name('appointment.display');
 Route::get('declineappointment/{id}','AppoitmentController@delete')->name('declineappointment');
@@ -67,7 +70,7 @@ Route::get('displayuser','UserController@disp')->name('user.display');
 Route::get('deleteuser/{id}','UserController@delete')->name('user.delete');
 Route::view('signup','frontend.usersignup')->name('user.signupform');
 Route::post('usersignup','UserController@usersignup')->name('usersignup.submit');
-Route::view('login','frontend.usersignin')->name('login');
+
 Route::post('usersignin','logincontroller@login')->name('user.login');
 Route::post('user-mail/{id}','Mailcontroller@usermails')->name('user.mail');
 

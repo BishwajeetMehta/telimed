@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Appointment;
+use App\Mail\AppointmentMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AppoitmentController extends Controller
 {
@@ -21,8 +23,7 @@ class AppoitmentController extends Controller
         ];
 
         Appointment::insert($data);
-        return rediect()->back();
-       //send appointment confirmation mail
+       Mail::to(auth()->user()->email)->send(new AppointmentMail('Pending'));
         //redirect from here
     }
 
@@ -55,6 +56,7 @@ class AppoitmentController extends Controller
         ];
 
       $record->update($data);
+        Mail::to(auth()->user()->email)->send(new AppointmentMail($request->status));
         return redirect()->route('appointment.display');
     
     }
