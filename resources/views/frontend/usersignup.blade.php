@@ -20,18 +20,27 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
+                                    @foreach ($errors->all() as $error)
+        
+                                    @endforeach
                                         <form action="{{route('usersignup.submit')}}"  method='POST'  enctype='multipart/form-data'>
                                             @csrf
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" name="name" />
+                                                        @if($errors->first('name'))
+                                                        <span style='color:red;'>{{$errors->first('name')}}</span>
+                                                        @endif
                                                         <label for="inputFirstName"> Name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="inputLastName" type="text" placeholder="Enter your Address" name="address"/>
+                                                        @if($errors->first('address'))
+                                                       <span style='color:red;'>{{$errors->first('address')}}</span>
+                                                       @endif
                                                         <label for="inputLastName">Address</label>
                                                     </div>
                                                 </div>
@@ -40,12 +49,18 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputFirstName" type="email" placeholder="Enter your first name" name="email" />
+                                                        @if($errors->first('email'))
+                                                       <span style='color:red;'>{{$errors->first('email')}}</span>
+                                                       @endif
                                                         <label for="inputFirstName"> Email</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="inputLastName" type="text" placeholder="Enter your Address" name="mobile" />
+                                                        @if($errors->first('mobile'))
+                                                       <span style='color:red;'>{{$errors->first('mobile')}}</span>
+                                                                                                      @endif
                                                         <label for="inputLastName">Mobile</label>
                                                     </div>
                                                 </div>
@@ -64,6 +79,9 @@
                                                 <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" name="password" />
+                                                        @if($errors->first('password'))
+                                                       <span style='color:red;'>{{$errors->first('password')}}</span>
+                                                       @endif
                                                         <label for="inputPassword">Password</label>
                                                     </div>
                                                 </div>
@@ -78,7 +96,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="{{route('login')}}">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>

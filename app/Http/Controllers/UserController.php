@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function disp()
     {
-        $data['users'] = User::all();
+        $data['users'] = User::latest()->paginate(15);
         return view('backend.dashboard.layouts.user.manageuser', $data);
     }
 
@@ -28,6 +28,14 @@ class UserController extends Controller
 
 
     public function usersignup(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' =>'required|email',
+            'password' =>'required|min:6',
+            'mobile' => 'required',
+            'address' => 'required',
+        
+        ]);
 
         $image_url = '';
         if($request->has('image') && $request->file('image')){

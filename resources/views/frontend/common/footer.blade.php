@@ -9,9 +9,9 @@
 					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
 
 					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="icofont-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="icofont-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="icofont-linkedin"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -77,14 +77,7 @@
 						&copy; Copyright Reserved to : <span class="text-color">{{ $_SESSION['setting']->email ? $_SESSION['setting']->email :'' }}</span>  <a href="{{url('/')}}" target="_blank"></a>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
-						<form action="#" class="subscribe">
-							<input type="text" class="form-control" placeholder="Your Email address">
-							<a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
-						</form>
-					</div>
-				</div>
+			
 			</div>
 
 			<div class="row">

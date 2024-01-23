@@ -11,7 +11,7 @@ class specificationcontroller extends Controller
 {
     public function disp()
     {
-        $data['specifications'] = specification::all();
+        $data['specifications'] = specification::latest()->paginate(15);
         return view('backend.dashboard.layouts.doctordetails.specification.index', $data);
     }
 

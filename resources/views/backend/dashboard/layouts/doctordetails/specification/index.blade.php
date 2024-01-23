@@ -40,7 +40,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                               
+                               {{$specifications->links()}}
                             </div>
                             
                         </div>

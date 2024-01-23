@@ -29,17 +29,17 @@
                                     </thead>
                                   
                                     <tbody>
-                                    @forelse($users as $users)
+                                    @forelse($users as $user)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$users->name}}</td>
-                                            <td>{{$users->email}}</td>
-                                            <td>{{$users->mobile}}</td> 
-                                            <td>{{$users->address}}</td>
-                                            <td>{{$users->age}}</td>
-                                            <td><img src="{{$users->image}}"height="100px" width="100px"></td>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->mobile}}</td> 
+                                            <td>{{$user->address}}</td>
+                                            <td>{{$user->age}}</td>
+                                            <td><img src="{{$user->image}}"height="100px" width="100px"></td>
                                             
-                                            <td>&nbsp&nbsp&nbsp<a href="{{route('user.delete',$users->id)}}" class='btn btn-danger'>Delete</a> </td>
+                                            <td>&nbsp&nbsp&nbsp<a href="{{route('user.delete',$user->id)}}" class='btn btn-danger'>Delete</a> </td>
                                             @empty
                                             <td>
                                                 no records
@@ -51,7 +51,7 @@
                                 </table>
                                
                             </div>
-                            
+                          {{$users->links()}}
                         </div>
                       
                     </div>

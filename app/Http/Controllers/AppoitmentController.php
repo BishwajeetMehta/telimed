@@ -11,7 +11,12 @@ class AppoitmentController extends Controller
 {
     public  function storeAppointments( Request  $request)
     {
-     
+        $request->validate([
+            'date' => 'required',
+            'time' =>'required',
+            'message' =>'required',
+                    
+        ]);
         //add validations
         $data = [
            'specification_id' => $request->specification,

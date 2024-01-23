@@ -20,9 +20,19 @@ Route::get('/', function () {
 
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index',$data);
-})->name('userdashboard');
+})->name('userdashboard')->middleware('auth');
 
-Route::view('login','frontend.usersignin')->name('login');
+Route::get('/contact', function () {
+
+    $data['system'] = systemsettings::find(1);
+    $data['specifications'] = specification::take(10)->get();
+
+    $_SESSION['setting'] = $data['system'];
+    return view('frontend.contact',$data);
+})->name('contact');
+
+
+Route::view('/login','frontend.usersignin')->name('login');
 Route::view('/team','frontend.team')->name('team');
 Route::get('/doctors','specificationcontroller@getDoctorList')->name('doctors.list');
 Route::post('/book-appoitment','AppoitmentController@storeAppointments')->name('appointment.save')->middleware('auth');

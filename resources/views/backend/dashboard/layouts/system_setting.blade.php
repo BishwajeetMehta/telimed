@@ -33,6 +33,9 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4"> System Settings </h1>
             </div>
+            @foreach ($errors->all() as $error)
+        
+        @endforeach
 
 <form class="user"   action='{{ route("system-setting.store")}}' method='POST'  enctype='multipart/form-data'>
  @csrf
@@ -42,6 +45,9 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Name</label>
     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name " name='name'>
+    @if($errors->first('name'))
+        <span style='color:red;'>{{$errors->first('name')}}</span>
+        @endif
   </div>
 
   <div class="form-group">
@@ -51,14 +57,23 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Phone</label>
     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Phone" name='phone'>
+    @if($errors->first('phone'))
+        <span style='color:red;'>{{$errors->first('phone')}}</span>
+        @endif
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name='email'>
+    @if($errors->first('email'))
+        <span style='color:red;'>{{$errors->first('email')}}</span>
+        @endif
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1"> Address</label>
     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Address" name='address'>
+    @if($errors->first('address'))
+        <span style='color:red;'>{{$errors->first('address')}}</span>
+        @endif
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1"> Logo</label>

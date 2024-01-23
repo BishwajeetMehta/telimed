@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
     <meta name="author" content="themefisher.com">
 
-    <title> HealthCare &TeliMedicine </title>
+    <title> HealthCare & TeliMedicine </title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
@@ -42,7 +43,7 @@
                     <p class="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam
                         aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
                     <div class="btn-container ">
-                        <a href="appoinment.html" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Make
+                        <a href="#appointment" class="btn btn-main-2 btn-icon btn-round-full">Make
                             appoinment <i class="icofont-simple-right ml-2  "></i></a>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                         <h4 class="mb-3">Online Appoinment</h4>
                         <p class="mb-4">Get ALl time support for emergency.We have introduced the principle of family
                             medicine.</p>
-                        <a href="appoinment.html" class="btn btn-main btn-round-full">Make a appoinment</a>
+                        <a href="#appointment" class="btn btn-main btn-round-full">Make a appoinment</a>
                     </div>
 
                     <div class="feature-item mb-5 mb-lg-0">
@@ -115,7 +116,7 @@
                     <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum
                         officia dolores repellat laudantium obcaecati neque.</p>
 
-                    <a href="service.html" class="btn btn-main-2 btn-round-full btn-icon">Services<i
+                    <a href="#services" class="btn btn-main-2 btn-round-full btn-icon">Services<i
                                 class="icofont-simple-right ml-3"></i></a>
                 </div>
             </div>
@@ -176,7 +177,7 @@
     </div>
 </section>
 
-<section class="section service gray-bg">
+<section class="section service gray-bg" id="services">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-7 text-center">
@@ -267,7 +268,7 @@
         </div>
     </div>
 </section>
-<section class="section appoinment">
+<section class="section appoinment" id="appointment">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 ">
@@ -285,6 +286,9 @@
                     <h2 class="mb-2 title-color">Book appoinment</h2>
                     <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit
                         . Iste dolorum atque similique praesentium soluta.</p>
+                        @foreach ($errors->all() as $error)
+        
+                        @endforeach
                     <form id="#" class="appoinment-form" method="post" action="{{ route('appointment.save') }}">
                         @csrf
                         <div class="row">
@@ -310,14 +314,19 @@
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="date" id="date" type="text" class="form-control"
-                                           placeholder="YYYY-MM-DD">
+                                    <input name="date" id="date" type="text" class="form-control"  placeholder="YYYY-MM-DD">
+                                           @if($errors->first('date'))
+                                 <span style='color:red;'>{{$errors->first('date')}}</span>
+                                 @endif
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="time" id="time" type="text" class="form-control" placeholder="Time">
+                                    @if($errors->first('time'))
+                                 <span style='color:red;'>{{$errors->first('time')}}</span>
+                                 @endif
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -337,8 +346,10 @@
                             </div>
                         </div>
                         <div class="form-group-2 mb-4">
-                            <textarea name="message" id="message" class="form-control" rows="6"
-                                      placeholder="Your Message"></textarea>
+                            <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
+                            @if($errors->first('message'))
+                                 <span style='color:red;'>{{$errors->first('message')}}</span>
+                                 @endif
                         </div>
 
                         <button type=submit btn-primary>Make Appoinment</button>

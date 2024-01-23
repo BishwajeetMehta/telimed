@@ -37,6 +37,13 @@ class SystemController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' =>'required|email',
+            'phone' => 'required',
+            'address' => 'required',
+        
+        ]);
         try{
 
             $logo = '';

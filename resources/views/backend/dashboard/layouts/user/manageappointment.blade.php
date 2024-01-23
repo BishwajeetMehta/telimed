@@ -43,7 +43,7 @@
                                             <td>{{$apoints->status}}</td>
                                             
                                             <td><a href="{{route('appointment.edit',$apoints->id)}}" class='btn btn-primary'>Approve</a>&nbsp&nbsp&nbsp<a href="{{route('declineappointment',$apoints->id)}}" class='btn btn-danger'>Decline</a>
-                                            <button type="submit" class="btn btn-primary">mail</button>
+                                          
                                         </td>
                                           
                                         </form>

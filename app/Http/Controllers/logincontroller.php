@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class logincontroller extends Controller
 {
       public function login(Request $request){
-       
-          
-        
+              
         $request->validate([
                 'email' =>'required|email',
                 'password' =>'required|min:6'

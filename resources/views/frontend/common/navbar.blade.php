@@ -32,13 +32,10 @@
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
 				<a class="nav-link" href="{{url('/')}}">Home</a>
-			  </li>
-			    <li class="nav-item"><a class="nav-link" href="{{route('team')}}">Our Team</a></li>
-
-			  			  
-			  	</li>
-			   <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+			 
+			   <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
 			</ul>
+			
 		  </div>
 		</div>
 	</nav>
