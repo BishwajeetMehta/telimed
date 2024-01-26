@@ -6,7 +6,7 @@
 					<div class="logo mb-4">
 						<img src="{{ $_SESSION['setting']->logo ? $_SESSION['setting']->logo :'' }}" alt="" class="img-fluid">
 					</div>
-					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
+					<p>{{ $_SESSION['setting']->description ? $_SESSION['setting']->description :'' }}.</p>
 
 					<ul class="list-inline footer-socials mt-4">
 						<li class="list-inline-item"><a href="#"><i class="icofont-facebook"></i></a></li>

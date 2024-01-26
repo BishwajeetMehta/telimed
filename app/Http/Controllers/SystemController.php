@@ -42,6 +42,7 @@ class SystemController extends Controller
             'email' =>'required|email',
             'phone' => 'required',
             'address' => 'required',
+            'description' => 'required',
         
         ]);
         try{
@@ -70,7 +71,8 @@ class SystemController extends Controller
              'email' =>$request->email,
              'slogan' =>$request->slogan ?? '',
              'logo' =>$logo,
-             'address' =>$request->address
+             'address' =>$request->address,
+             'description' =>$request->description
             ];
        
             $status  = systemsettings::updateOrCreate(['id' => 1], $data);

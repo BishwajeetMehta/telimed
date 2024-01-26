@@ -21,6 +21,7 @@ class CreateSystemsettingsTable extends Migration
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('logo')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

@@ -34,6 +34,13 @@
 				<a class="nav-link" href="{{url('/')}}">Home</a>
 			 
 			   <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
+			   <li class="nav-item"><a class="nav-link" href="{{route('appointment')}}">Appointment</a></li>
+			   <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Signin</a></li>
+			   <li class="nav-item"><a class="nav-link" href="{{route('admin.login.logout')}}">Signout</a></li>
+			   
+			   <li class="nav-item"><a class="nav-link" href="{{route('profile')}}">profile</a></li>
+			   
+
 			</ul>
 			
 		  </div>

@@ -20,7 +20,7 @@ Route::get('/', function () {
 
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index',$data);
-})->name('userdashboard')->middleware('auth');
+})->name('userdashboard');
 
 Route::get('/contact', function () {
 
@@ -30,6 +30,15 @@ Route::get('/contact', function () {
     $_SESSION['setting'] = $data['system'];
     return view('frontend.contact',$data);
 })->name('contact');
+
+Route::get('/appointment', function () {
+
+    $data['system'] = systemsettings::find(1);
+    $data['specifications'] = specification::with('doctor')->get();
+
+    $_SESSION['setting'] = $data['system'];
+    return view('frontend.appointment',$data);
+})->name('appointment')->middleware('auth');
 
 
 Route::view('/login','frontend.usersignin')->name('login');
@@ -83,7 +92,8 @@ Route::post('usersignup','UserController@usersignup')->name('usersignup.submit')
 
 Route::post('usersignin','logincontroller@login')->name('user.login');
 Route::post('user-mail/{id}','Mailcontroller@usermails')->name('user.mail');
-
+Route::get('userdetails/{id}','UserController@userdetails')->name('user.details');
+Route::view('profile','frontend.profiledetail')->name('profile')->middleware('auth');
 
 });
 

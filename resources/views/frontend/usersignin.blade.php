@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Bootstrap 5 Login Form (with Glassmorphism)</title>
+  <title> Login Form</title>
   <style>
     html,
 body {
@@ -149,7 +149,9 @@ body {
       </div>
       <button class="w-100 btn btn-lg" type="submit">Sign in</button>
     </form>
-          <p class="copyright">&copy; 2021</p>
+    <div class="card-footer text-center ">
+       <div ><a href="{{route('user.signupform')}}"> Do not have an account. Go to Signup</a></div>
+    </div>
   </main>
 <!-- partial -->
   

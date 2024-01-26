@@ -76,6 +76,13 @@
         @endif
   </div>
   <div class="form-group">
+    <label for="exampleInputEmail1"> Description</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="description" name='description'>
+    @if($errors->first('description'))
+        <span style='color:red;'>{{$errors->first('description')}}</span>
+        @endif
+  </div>
+  <div class="form-group">
     <label for="exampleInputEmail1"> Logo</label>
     <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Logo" name='logo'>
   </div>

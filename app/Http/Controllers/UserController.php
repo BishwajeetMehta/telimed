@@ -61,4 +61,16 @@ class UserController extends Controller
         User::insert($data);
         return redirect()->back();
     }
+
+    public function userdetails($id)
+            {
+            if($id){
+
+            $data['appointments']= user::with('appointments')->where('id', $id)->get();
+            return view('frontend.userdetails',$data);
+            }
+            return redirect()->back();
+            }
+
+            
 }

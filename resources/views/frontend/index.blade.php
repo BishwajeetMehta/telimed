@@ -38,12 +38,11 @@
                 <div class="block">
                     <div class="divider mb-3"></div>
                     <span class="text-uppercase text-sm letter-spacing ">Total Health care solution</span>
-                    <h1 class="mb-3 mt-3">Your most trusted health partner</h1>
+                    <h1 class="mb-3 mt-3">{{ $_SESSION['setting']->slogan ? $_SESSION['setting']->slogan :'' }}</h1>
 
-                    <p class="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam
-                        aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
+                    <p class="mb-4 pr-5">{{ $_SESSION['setting']->description ? $_SESSION['setting']->description :'' }}</p>
                     <div class="btn-container ">
-                        <a href="#appointment" class="btn btn-main-2 btn-icon btn-round-full">Make
+                        <a href="{{route('appointment')}}" class="btn btn-main-2 btn-icon btn-round-full">Make
                             appoinment <i class="icofont-simple-right ml-2  "></i></a>
                     </div>
                 </div>
@@ -64,7 +63,7 @@
                         <h4 class="mb-3">Online Appoinment</h4>
                         <p class="mb-4">Get ALl time support for emergency.We have introduced the principle of family
                             medicine.</p>
-                        <a href="#appointment" class="btn btn-main btn-round-full">Make a appoinment</a>
+                        <a href="{{route('appointment')}}" class="btn btn-main btn-round-full">Make a appoinment</a>
                     </div>
 
                     <div class="feature-item mb-5 mb-lg-0">
@@ -85,9 +84,8 @@
                             <i class="icofont-support"></i>
                         </div>
                         <span>Emegency Cases</span>
-                        <h4 class="mb-3">1-800-700-6200</h4>
-                        <p>Get ALl time support for emergency.We have introduced the principle of family medicine.Get
-                            Conneted with us for any urgency .</p>
+                        <h4 class="mb-3">{{ $_SESSION['setting']->phone ? $_SESSION['setting']->phone :'' }}</h4>
+                        <p>{{ $_SESSION['setting']->description ? $_SESSION['setting']->description :'' }}.</p>
                     </div>
                 </div>
             </div>
@@ -268,98 +266,7 @@
         </div>
     </div>
 </section>
-<section class="section appoinment" id="appointment">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 ">
-                <div class="appoinment-content">
-                    <img src="images/about/img-3.jpg" alt="" class="img-fluid">
-                    <div class="emergency">
-                        <h2 class="text-lg"><i
-                                    class="icofont-phone-circle text-lg"></i>{{ $_SESSION['setting']->phone ? $_SESSION['setting']->phone :'' }}
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 ">
-                <div class="appoinment-wrap mt-5 mt-lg-0">
-                    <h2 class="mb-2 title-color">Book appoinment</h2>
-                    <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit
-                        . Iste dolorum atque similique praesentium soluta.</p>
-                        @foreach ($errors->all() as $error)
-        
-                        @endforeach
-                    <form id="#" class="appoinment-form" method="post" action="{{ route('appointment.save') }}">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select class="form-control" id="specificationList" name="specification">
 
-                                        @forelse($specifications as $specification)
-                                            <option value="{{ $specification->id }}">{{ $specification->specification }}</option>
-                                        @empty
-                                        @endforelse
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select class="form-control" id="doctorsList" name="doctor_id">
-                                        <option>--Select--</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input name="date" id="date" type="text" class="form-control"  placeholder="YYYY-MM-DD">
-                                           @if($errors->first('date'))
-                                 <span style='color:red;'>{{$errors->first('date')}}</span>
-                                 @endif
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input name="time" id="time" type="text" class="form-control" placeholder="Time">
-                                    @if($errors->first('time'))
-                                 <span style='color:red;'>{{$errors->first('time')}}</span>
-                                 @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select class="form-control" id="specificationList" name="userid">
-                                        <option value="{{ auth()->user()->id }}">{{Illuminate\Support\Facades\Auth::check() ? Illuminate\Support\Facades\Auth::user()->name: 'Please Login first'}}</option>
-
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input name="phone" type="text" class="form-control" placeholder="Phone Number">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-2 mb-4">
-                            <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
-                            @if($errors->first('message'))
-                                 <span style='color:red;'>{{$errors->first('message')}}</span>
-                                 @endif
-                        </div>
-
-                        <button type=submit btn-primary>Make Appoinment</button>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 <!-- footer Start -->
@@ -393,20 +300,7 @@
 <script src="{{asset('js/contact.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function () {
-        $("#specificationList").change(function () {
 
-            $.ajax({
-                url: "{{ route('doctors.list') }}",
-                data: {'id': $('#specificationList').val()},
-                success: function (result) {
-                    $('#doctorsList').empty().html(result.doctors)
-                }
-            });
-        });
-    });
-</script>
 
 </body>
 </html>
