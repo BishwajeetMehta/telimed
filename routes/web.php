@@ -53,7 +53,7 @@ Route::post('/login','LoginController@login')->name('admin.login.submit');
 Route::view('/create','backend.dashboard.layouts.doctordetails.addDoctor')->name('create');
 
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'], function () {
+Route::group(['prefix'=>'admin','middleware'=>['auth','role']], function () {
     Route::view('dashboard','backend.dashboard.index')->name('dashboard');
     Route::view('login','backend.dashboard.login')->name('admin.login.submitform');
     Route::get('logout','logincontroller@logout')->name('admin.login.logout');
